@@ -92,10 +92,14 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #         'PORT': '5432',
 #     }
 # }
+
+# For deployment on render - add this
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    # the link here is the external link provided on postgresql web service db
+    # the internal link is added on the environment variable on the web service creation bit
+	"default": dj_database_url.parse("postgresql://my_blog_db_y95z_user:KTCsHkowdz42wCnFlLBke0h2Mc3kkxCt@dpg-ctn98kpopnds73flbd4g-a.oregon-postgres.render.com/my_blog_db_y95z")
 }
 
 
