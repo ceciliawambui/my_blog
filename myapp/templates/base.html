@@ -1,0 +1,23 @@
+<!-- base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Tailwind css link -->
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    {% include "navbar.html" %}
+    
+    {% block content %}
+    <!-- Content specific to child templates will be inserted here -->
+    {% endblock %}
+    
+    <!-- Common footer content goes here -->
+</body>
+</html>

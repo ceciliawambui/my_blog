@@ -1,0 +1,21 @@
+<!-- index.html -->
+
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <!-- content specific to child template -->
+    <div class="container mx-auto">
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <h1 class="mt-5 mb-5 text-4xl font-bold text-red-500">{{ message }}</h1>
+            </div>
+            <img src="{{ STATIC_URL }}static/images/new1.jpeg" width="400" height="400" alt="My Image">
+
+        
+        </div>
+    </div>
+{% endblock %}
