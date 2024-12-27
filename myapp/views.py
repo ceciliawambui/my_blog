@@ -4,6 +4,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Blog
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Subscriber
+
 
 def blog_list(request):
     blogs = Blog.objects.all()
@@ -23,3 +27,16 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if Subscriber.objects.filter(email=email).exists():
+            messages.error(request, 'You are already subscribed.')
+        else:
+            subscriber = Subscriber(email=email)
+            subscriber.save()
+            messages.success(request, 'Thank you for subscribing!')
+            return redirect('subscribe')
+    return render(request, 'subscribe.html')

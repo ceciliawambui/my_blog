@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-nrtur5!t5)-16bxeucf%+!+^d_70=u8-bi9clzax&kpw8xtiu9
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -82,25 +81,25 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'blogs_db',
-#         'USER': 'blogsuser',
-#         'PASSWORD': '123456',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blogs_db',
+        'USER': 'blogsuser',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # For deployment on render - add this
-import dj_database_url
+# import dj_database_url
 
-DATABASES = {
-    # the link here is the external link provided on postgresql web service db
-    # the internal link is added on the environment variable on the web service creation bit
-	"default": dj_database_url.parse("postgresql://my_blog_db_y95z_user:KTCsHkowdz42wCnFlLBke0h2Mc3kkxCt@dpg-ctn98kpopnds73flbd4g-a.oregon-postgres.render.com/my_blog_db_y95z")
-}
+# DATABASES = {
+#     # the link here is the external link provided on postgresql web service db
+#     # the internal link is added on the environment variable on the web service creation bit
+# 	"default": dj_database_url.parse("postgresql://my_blog_db_y95z_user:KTCsHkowdz42wCnFlLBke0h2Mc3kkxCt@dpg-ctn98kpopnds73flbd4g-a.oregon-postgres.render.com/my_blog_db_y95z")
+# }
 
 
 
