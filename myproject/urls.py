@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import handler404
 
 
 urlpatterns = [
@@ -24,3 +25,5 @@ urlpatterns = [
     path('', include('myapp.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
+handler404 = 'myapp.views.error_404'
+

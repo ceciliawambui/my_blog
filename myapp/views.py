@@ -57,3 +57,7 @@ def create_blog(request):
         form = BlogForm()
     
     return render(request, 'create_blog.html', {'form': form})
+
+def error_404(request, exception):
+
+    return render(request, '404.html')
