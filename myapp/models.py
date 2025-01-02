@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
+
 
 
 class Author(models.Model):
@@ -28,6 +30,8 @@ class Blog(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
+    image = CloudinaryField('image', null=True)
+
 
 
     class Meta:

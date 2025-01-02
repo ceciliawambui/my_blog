@@ -27,6 +27,15 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ['*']
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name='dx6xmqvcy',
+    api_key='881328275451762',
+    api_secret='7JbtkJATKnDs7Tw_aQj6poN7F-o'
+)
 
 
 # Application definition
@@ -39,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [

@@ -46,7 +46,7 @@ def subscribe(request):
 
 def create_blog(request):
     if request.method == 'POST':
-        form = BlogForm(request.POST)
+        form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Blog post created successfully!')
