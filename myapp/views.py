@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from .forms import BlogForm
+
 
 from .models import Blog
 from django.shortcuts import render, redirect
@@ -40,3 +42,18 @@ def subscribe(request):
             messages.success(request, 'Thank you for subscribing!')
             return redirect('subscribe')
     return render(request, 'subscribe.html')
+
+
+def create_blog(request):
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Blog post created successfully!')
+            return redirect('blog_list')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = BlogForm()
+    
+    return render(request, 'create_blog.html', {'form': form})
