@@ -22,16 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-nrtur5!t5)-16bxeucf%+!+^d_70=u8-bi9clzax&kpw8xtiu9'
+SECRET_KEY = 'django-insecure-nrtur5!t5)-16bxeucf%+!+^d_70=u8-bi9clzax&kpw8xtiu9'
 # Django Secret Key
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
 # Cloudinary Configuration
   
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 
 
@@ -41,17 +41,17 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-# cloudinary.config(
-#     cloud_name='dx6xmqvcy',
-#     api_key='881328275451762',
-#     api_secret='7JbtkJATKnDs7Tw_aQj6poN7F-o'
-# )
-cloudinary.config (
-    api_key = config('CLOUDINARY_API_KEY'),
-    api_secret = config('CLOUDINARY_API_SECRET'),
-    cloud_name = config('CLOUDINARY_CLOUD_NAME')
+cloudinary.config(
+    cloud_name='dx6xmqvcy',
+    api_key='881328275451762',
+    api_secret='7JbtkJATKnDs7Tw_aQj6poN7F-o'
+)
+# cloudinary.config (
+#     api_key = config('CLOUDINARY_API_KEY'),
+#     api_secret = config('CLOUDINARY_API_SECRET'),
+#     cloud_name = config('CLOUDINARY_CLOUD_NAME')
 
-)  
+# )  
 
 
 # Application definition
@@ -174,3 +174,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = '/'  # Redirect to home after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home after logout
+LOGIN_URL = '/accounts/login/'  # Default login URL
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

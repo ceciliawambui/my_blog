@@ -1,14 +1,13 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse
 from .forms import BlogForm
-
-
 from .models import Blog
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Subscriber
+from django.contrib.auth.decorators import login_required
+from .forms import RegistrationForm
+
 
 
 def blog_list(request):
@@ -43,7 +42,7 @@ def subscribe(request):
             return redirect('subscribe')
     return render(request, 'subscribe.html')
 
-
+@login_required
 def create_blog(request):
     if request.method == 'POST':
         form = BlogForm(request.POST, request.FILES)
@@ -61,3 +60,14 @@ def create_blog(request):
 def error_404(request, exception):
 
     return render(request, '404.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = RegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})

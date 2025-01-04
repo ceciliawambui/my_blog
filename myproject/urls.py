@@ -23,6 +23,8 @@ from django.conf.urls import handler404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),  # Include default auth URLs
+
 ]
 urlpatterns += staticfiles_urlpatterns()
 handler404 = 'myapp.views.error_404'

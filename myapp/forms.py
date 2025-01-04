@@ -1,5 +1,7 @@
 from django import forms
 from .models import Blog, Author
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class BlogForm(forms.ModelForm):
     author = forms.ModelChoiceField(
@@ -32,3 +34,9 @@ class BlogForm(forms.ModelForm):
                 'accept': 'image/*'
             }),
         }
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
